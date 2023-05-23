@@ -1,3 +1,22 @@
+** there is package missing in raspb
+https://stackoverflow.com/a/57228918
+
+notably.
+-- paho.mqtt.python
+
+```
+git clone https://github.com/eclipse/paho.mqtt.python
+```
+
+Once you have the code, it can be installed from your repository as well:
+
+```
+cd paho.mqtt.python
+python setup.py install
+
+```
+
+
 Recent updates:
 - 06.01.2022 - v4.0 - Added support for LYWSD03MMC - only with custom firmware, can add multiple sensors
 - 31.10.2020 - v3.0 - app is now using nginx+gunicorn, it consumes less cpu
