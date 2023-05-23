@@ -1,4 +1,6 @@
-** there is package missing in raspb
+** there is package missing in raspb 
+5.15.0-1024-raspi
+
 https://stackoverflow.com/a/57228918
 
 notably.
