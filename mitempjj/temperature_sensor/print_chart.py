@@ -33,15 +33,14 @@ class LineChart(Chart):
     return [
     {
       'label': ["Battery"],
-      #'borderColor' : colors,
-      #'backgroundColor' : colors,
+                'backgroundColor': colors[0],
+                'borderColor': colors[0],
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('batterytab')
     },
     {
       'label': ["Temperature"],
                 'backgroundColor': colors[1],
                 'borderColor': colors[1],
-
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('temperaturetab')
     },
     {
@@ -50,7 +49,6 @@ class LineChart(Chart):
                 'borderColor': colors[2],
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('humiditytab')
     },
-    
     ]
     
     
