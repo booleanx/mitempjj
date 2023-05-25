@@ -34,26 +34,25 @@ class LineChart(Chart):
     {
       'label': ["Battery"],
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('batterytab'),
-      'borderColor' : colors[3],
-      'backgroundColor' : colors[3]
+     # 'borderColor' : colors[3],
+    #  'backgroundColor' : colors[3]
     },
     {
       'label': ["Temperature"],
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('temperaturetab'),
-      'borderColor' : colors[2],
-      'backgroundColor' : colors[2]
+     # 'borderColor' : colors[2],
+     # 'backgroundColor' : colors[2]
     },
     {
       'label': ["Humidity"],
       'data': readall(StartDate=self.start_date, EndDate=self.stop_date, sensor_name=self.sensor_name).get('humiditytab'),
-      'backgroundColor' : colors[1],
-      'borderColor' : colors[1]
+    #  'backgroundColor' : colors[1],
+    #  'borderColor' : colors[1]
     }
-    ]
-    
+    ] 
     
   def get_labels(self, **kwargs):
-    return readall(StartDate=self.start_date,EndDate=self.stop_date, sensor_name=self.sensor_name) .get('datetab')
+    return readall(StartDate=self.start_date,EndDate=self.stop_date, sensor_name=self.sensor_name).get('datetab')
     
 
 class SQLITE():
