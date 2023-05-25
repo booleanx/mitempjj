@@ -25,6 +25,7 @@ urlpatterns = [
     re_path (r'^admin/', admin.site.urls),
     re_path (r'temperature_sensor/$', temperature_sensor_view, name='temperature_sensor'),
     re_path (r'temperature_sensor2/$', temperature_sensor_view2, name='temperature_sensor2'),
+    re_path (r'temperature/$', temperature_sensor_viewbytype, name='temperature'),
     path('temperature_sensor/api/', MitempApiView.as_view()),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'),name='logout'),
     re_path (r'', main_view, name="main"),

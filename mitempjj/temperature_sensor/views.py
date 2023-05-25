@@ -6,6 +6,7 @@ from jchart import Chart
 from datetime import datetime, timedelta
 from .print_chart import *
 from .print_chart2 import *
+from .print_chart_bytype import *
 from .serializers import MitempSerializer
 from rest_framework import views
 from rest_framework.response import Response
@@ -70,6 +71,50 @@ def temperature_sensor_view(request):
 
         for sensor_name in SENSORS:
             chart = LineChart(StartDate, EndDate, sensor_name)
+            charts.append({'sensor_name': sensor_name, 'chart': chart})
+
+        return render(request, 'temperature_sensor/index.html', 
+        {
+        'charts': charts,
+        'StartDate': StartDate,
+        'EndDate' : EndDate,
+        })
+
+#@login_required
+@csrf_exempt
+def temperature_sensor_viewbytype(request):
+    '''Temperature sensor view by type'''
+    charts = []
+    #if date is sent via form
+    if request.method == 'POST':
+        StartDate = request.POST['StartDate']                   #retrive vars from forms
+        EndDate = request.POST['EndDate']
+        try:                                                     #input string verification
+            datetime.strptime(StartDate , '%Y-%m-%d')
+            datetime.strptime(EndDate, '%Y-%m-%d')
+        except ValueError:
+            StartDate = (datetime.now() - timedelta(1) ).strftime("%Y-%m-%d")
+            EndDate = (datetime.now() + timedelta(1) ).strftime("%Y-%m-%d")
+
+        for sensor_name in SENSORS:
+            chart = LineChartByTemp(StartDate, EndDate, sensor_name)
+            charts.append({'sensor_name': sensor_name, 'chart': chart})
+
+        return render(request, 'temperature_sensor/index.html', 
+        {
+        'charts': charts,
+        'StartDate': StartDate,
+        'EndDate' : EndDate,
+        })
+
+
+    #no date set
+    else:
+        StartDate = (datetime.now() - timedelta(1) ).strftime("%Y-%m-%d")
+        EndDate = (datetime.now() + timedelta(1) ).strftime("%Y-%m-%d")
+
+        for sensor_name in SENSORS:
+            chart = LineChartByTemp(StartDate, EndDate, sensor_name)
             charts.append({'sensor_name': sensor_name, 'chart': chart})
 
         return render(request, 'temperature_sensor/index.html', 
