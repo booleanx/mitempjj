@@ -97,10 +97,10 @@ def temperature_sensor_viewbytype(request):
             EndDate = (datetime.now() + timedelta(1) ).strftime("%Y-%m-%d")
 
         for sensor_name in SENSORS:
-            chart = LineChartByTemp(StartDate, EndDate, sensor_name)
-            charts.append({'sensor_name': sensor_name, 'chart': chart})
+            chart = LineChartByTemp(StartDate, EndDate)
+            charts.append({ 'chart': chart})
 
-        return render(request, 'temperature_sensor/index.html', 
+        return render(request, 'temperature/index.html', 
         {
         'charts': charts,
         'StartDate': StartDate,
@@ -114,10 +114,10 @@ def temperature_sensor_viewbytype(request):
         EndDate = (datetime.now() + timedelta(1) ).strftime("%Y-%m-%d")
 
         for sensor_name in SENSORS:
-            chart = LineChartByTemp(StartDate, EndDate, sensor_name)
-            charts.append({'sensor_name': sensor_name, 'chart': chart})
+            chart = LineChartByTemp(StartDate, EndDate)
+            charts.append({ 'chart': chart})
 
-        return render(request, 'temperature_sensor/index.html', 
+        return render(request, 'temperature/index.html', 
         {
         'charts': charts,
         'StartDate': StartDate,
